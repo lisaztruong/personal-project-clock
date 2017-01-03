@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<canvas id="canvas" width="400" height="400"
+<!-- Lisa changed width and height from 400 -->
+<canvas id="canvas" width="600" height="600"
 style="background-color:#7ec0ee">
 </canvas>
 
 <script>
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-var radius = canvas.height / 2;
-ctx.translate(radius, radius);
-radius = radius * 0.90
+var radiusA = canvas.height / 2;
+ctx.translate(radiusA, radiusA);
+// Lisa changed radius from 
+// radius = radiusA * 0.90
+radius = radiusA * 0.70
+
 setInterval(drawClock, 1000);
 
 function drawClock() {
   drawFace(ctx, radius);
-  // drawNumbers(ctx, radius);
   drawTime(ctx, radius);
 }
 
@@ -38,24 +40,6 @@ function drawFace(ctx, radius) {
   ctx.fillStyle = '#333';
   ctx.fill();
 }
-
-// function drawNumbers(ctx, radius) {
-//   var ang;
-//   var num;
-//   ctx.font = radius*0.15 + "px arial";
-//   ctx.textBaseline="middle";
-//   ctx.textAlign="center";
-//   for(num = 1; num < 13; num++){
-//     ang = num * Math.PI / 6;
-//     ctx.rotate(ang);
-//     ctx.translate(0, -radius*0.85);
-//     ctx.rotate(-ang);
-//     ctx.fillText(num.toString(), 0, 0);
-//     ctx.rotate(ang);
-//     ctx.translate(0, radius*0.85);
-//     ctx.rotate(-ang);
-//   }
-// }
 
 function drawTime(ctx, radius){
     var now = new Date();
@@ -86,6 +70,15 @@ function drawHand(ctx, pos, length, width) {
     ctx.stroke();
     ctx.rotate(-pos);
 }
+
+// Lisa created new object to insert an image icon 
+var imageObj = new Image();
+  imageObj.onload = function() {
+    ctx.drawImage(imageObj, -300, 0);
+  };
+  // cute cat image
+  imageObj.src = 'http://1.bp.blogspot.com/-_1pDGXMyu7Y/UMVqxR13BFI/AAAAAAAAAJw/0ns2PhRiZbY/s1600/cat.png';
+
 </script>
 
 </body>
