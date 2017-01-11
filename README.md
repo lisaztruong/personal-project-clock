@@ -1,1 +1,4 @@
-# MakerGames-Clock
+# personal-project-clock
+
+continuing makergames clock
+
